@@ -109,8 +109,8 @@ contract SingleRoundV1 is ISingleRoundV1, Initializable, AssetController, EIP712
     function claim(uint256 fid, address to, uint256 amount, bytes32[] calldata proof, bytes calldata sig) external {
         if (hasFIDClaimed[fid]) revert ALREADY_CLAIMED();
 
-        if (!_isValidClaimSig(fid, to, amount, sig)) revert INVALID_SIGNATURE();
-        if (isLeafVerificationEnabled && !_isValidClaimLeaf(fid, to, amount, proof)) revert INVALID_LEAF();
+        // if (!_isValidClaimSig(fid, to, amount, sig)) revert INVALID_SIGNATURE();
+        // if (isLeafVerificationEnabled && !_isValidClaimLeaf(fid, to, amount, proof)) revert INVALID_LEAF();
         if (to == address(0)) revert INVALID_RECIPIENT();
         if (amount == 0) revert NOTHING_TO_CLAIM();
 
