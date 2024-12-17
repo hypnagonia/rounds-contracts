@@ -106,7 +106,7 @@ contract SingleRoundV1 is ISingleRoundV1, Initializable, AssetController, EIP712
     /// @param amount The amount of tokens owed.
     /// @param proof The merkle proof to prove address and amount are in tree.
     /// @param sig The claim signature.
-    function claim(uint256 fid, address to, uint256 amount, bytes32[] calldata proof, bytes calldata sig) external {
+    function claim(uint256 fid, address to, uint256 amount, bytes32[] calldata proof, bytes calldata sig) external onlyAdmin {
         if (hasFIDClaimed[fid]) revert ALREADY_CLAIMED();
 
         // if (!_isValidClaimSig(fid, to, amount, sig)) revert INVALID_SIGNATURE();
